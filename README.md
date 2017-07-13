@@ -1,4 +1,4 @@
-
+1. run nmp install
 1. run mongod 
 1. run ng build
 3. npm start
