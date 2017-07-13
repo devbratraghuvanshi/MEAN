@@ -1,0 +1,98 @@
+<div class="row flight-result select">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom: -1px;">
+        <div class="flight-result-display mg-t10 row">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 airline-detail">
+                <span class="ellipsis"><span class="airline-img span-block"><img src="//img.yuvatrip.com/flight/flightlogos/{{flightDetail.OutB.AirlC}}.gif"></span>
+                <span class="airline-code">{{flightDetail.OutB.AirlC}}</span> -
+                <span>{{flightDetail.OutB.FNum}}</span> [ <span>{{flightDetail.OutB.FCls}}</span> ]
+                <span class="small span-block" style="color:#999">{{flightDetail.OutB.AirlN}}</span>
+                </span>
+            </div>
+            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 flight-info ta-c">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-5 col-md-4 col-lg-4"><span class="flight-schedule dep-time">
+                        {{flightDetail.OutB.DepTime}}</span><br><span class="small color-g">{{flightDetail.OutB.DepDate}}</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-4 col-lg-4">
+                        <span class="flight-schedule flight-dur">{{flightDetail.OutB.Dur}}</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-5 col-md-4 col-lg-4">
+                        <span class="flight-schedule arr-time">{{flightDetail.OutB.ArrTime}}</span>
+                        <br>
+                        <span class="small color-g">{{flightDetail.OutB.ArrDate}}</span>
+                    </div>
+                </div>
+                <div class="row"><img src="//img.yuvatrip.com/b2b/icons/flight-landing.png" style="width:70%; max-width:465px;"></div>
+                <div class="row small">
+                    <div class="col-xs-4 col-sm-5 col-md-4 col-lg-4">
+                        <span class="ellipsis"><span>{{flightDetail.OutB.OAirpC}}</span> [ <span>{{flightDetail.OutB.OAirpN}}</span>                        ]</span>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 col-md-4 col-lg-4">
+                        <span class="flight-stop stops">{{flightDetail.OutB.Stop}}</span>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+                        <span class="ellipsis"><span>{{flightDetail.OutB.DAirpC}}</span> [ <span>{{flightDetail.OutB.DAirpN}}</span>                        ]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-sm-0 col-xs-2 col-sm-2 col-md-2 col-lg-2  flight-booking-price fs-p120 ta-c">
+                <span><i class="fa fa-rupee" style="color: #999"></i> <span class="spanFare">{{flightDetail.PayableFare}}</span>                </span>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2 col-xs-6 ta-c flight-book-now">
+                <span class="btn btn-danger flight-book">Book</span>
+            </div>
+        </div>
+        <div class="flight-itenary row">
+            <div class="col-xs-10 col-sm-8 col-md-10">
+                <div class="row">
+                    <ul class="menu-items-horizontal-1">
+                        <li *ngIf="flightDetail.IsRefundable == 'Ref' ;else elseNonRefundable">
+                            <i>
+                                <img src="//img.yuvatrip.com/b2b/icons/refundable.png">
+                                </i>
+                            <span class="hidden-sm-down">Refundable</span>
+                        </li>
+                        <ng-template #elseNonRefundable>
+                            <li>
+                                <i><img src="//img.yuvatrip.com/b2b/icons/non-refundable.png" >
+                            </i>
+                                <span class="hidden-sm-down">Non Refundable</span>
+                            </li>
+                        </ng-template>
+                        <li *ngIf="flightDetail.Meal == 'Free Meals' ;else elsePaidMeals">
+                            <i>
+                                <img src="//img.yuvatrip.com/b2b/icons/meal-airline.png" >
+                                </i>
+                            <span class="hidden-sm-down">Free Meals</span>
+                        </li>
+                        <ng-template #elsePaidMeals>
+                        <li><i><img src="//img.yuvatrip.com/b2b/icons/meal-airline-paid.png"></i>
+                            <span class="hidden-sm-down">Paid Meals</span>
+                        </li>
+                        </ng-template>
+                        <li>
+                            <i>
+                                <img  src="//img.yuvatrip.com/b2b/icons/suitcase.png">
+                                <img src="//img.yuvatrip.com/b2b/icons/paid-suitcase.png">
+                            </i>
+                            <span class="baggage">15 Kg</span>
+                        </li>
+                        <li>
+                            <i>
+                                <img src="//img.yuvatrip.com/b2b/icons/hand-baggage.png" style="width:19px;" >
+                            </i>
+                            <span class="baggage">{{flightDetail.Baggage}}</span>
+                        </li>
+                        <li>
+                            <i>
+                                <img src="//img.yuvatrip.com/b2b/icons/flight-seat.png" >
+                            </i>
+                            <span class="seat-no">3</span><span class="hidden-sm-down">Left</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
