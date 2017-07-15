@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { FlightSearch } from '../Repository/flight-search-repository';
-
+import { YtApi } from './ytapi';
 
 
 export class FlightController {
@@ -14,11 +14,8 @@ public AddAllFlightsToMongoDB(req: Request, res: Response, next: NextFunction) {
     FlightSearch.collection.insert(flights);
     res.send('data added');
   }
-  /**
-   * GET all movies.
-   */
-  public getAllFlights(req: Request, res: Response, next: NextFunction) {
 
+    public async getAllFlightsDB(req: Request, res: Response, next: NextFunction) {
     FlightSearch.find((error, flights) => {
       if (error) {
         res.status(500);
@@ -28,6 +25,22 @@ public AddAllFlightsToMongoDB(req: Request, res: Response, next: NextFunction) {
         res.send(flights);
       }
     });
+  }
+  /**
+   * GET all movies.
+   */
+  public async getAllFlightsApi(req: Request, res: Response, next: NextFunction) {
+    const api = new YtApi();
+    res.send( await api.getResrult());
+    // FlightSearch.find((error, flights) => {
+    //   if (error) {
+    //     res.status(500);
+    //     res.send('internal server error');
+    //   } else {
+    //     res.status(200);
+    //     res.send(flights);
+    //   }
+    // });
   }
 
 }

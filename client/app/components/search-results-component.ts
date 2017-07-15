@@ -20,7 +20,8 @@ export class SearchResultsComponent implements OnInit {
         this.getSerchResults();
     }
     getSerchResults(): void {
-        this.flightService.search().then(fsSarch => this.flightSearch = fsSarch)
+        // change searchDb to searchApi
+        this.flightService.searchApi().then(fsSarch => this.flightSearch = fsSarch)
         .catch(error => console.log(error));
     }
 }

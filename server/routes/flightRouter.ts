@@ -14,7 +14,8 @@ export class FlightRouter {
 
   init() {
       this.router.get('/add', this.controller.AddAllFlightsToMongoDB);
-      this.router.get('/', this.controller.getAllFlights);
+      this.router.get('/db', this.controller.getAllFlightsDB);
+      this.router.get('/api', this.controller.getAllFlightsApi);
     // this.router.get('/:id', this.controller.getById);
   }
 

@@ -1,7 +1,6 @@
 import { FlightDetail } from './flight-detail-model';
 
  export class FlightSearch {
-    _id: string;
     TotalResult: string;
     JourneyType: string;
     Source: string;

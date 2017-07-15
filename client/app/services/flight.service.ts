@@ -9,13 +9,18 @@ import { FlightSearch } from './../models/flight-search-model';
 @Injectable()
 export class FlightService {
 
-    private baseUrl = 'http://localhost:3000/api/v1/flight/search';
+    private baseUrl = 'http://localhost:3000/api/v1/flight/search/api';
 
     constructor(private http: Http) { }
 
-    search(): Promise<FlightSearch> {
+    searchDb(): Promise<FlightSearch> {
         return this.http.get(this.baseUrl).toPromise()
             .then(res => res.json()[0] as FlightSearch)
+            .catch(this.handleError);
+    };
+    searchApi(): Promise<FlightSearch> {
+        return this.http.get(this.baseUrl).toPromise()
+            .then(res => res.json() as FlightSearch)
             .catch(this.handleError);
     };
 
