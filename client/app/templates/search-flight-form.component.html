@@ -1,0 +1,105 @@
+<form class="container"  #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+
+    <div class="col-md-8 col-md-offset-2">  
+    <div class="form-group col-md-6">
+        <label for="OneWay">OneWay</label>
+            <input type="radio" name="journeyType" id="OneWay" value="OneWay"  [(ngModel)]="tripType" >
+    </div>
+
+    <div class="form-group col-md-6">
+         <label for="Return">Return</label>
+            <input type="radio" name="journeyType" id="Return" value="Return"  [(ngModel)]="tripType" >
+    </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <label for="Origin">Origin</label>
+            <input type="text" name="origin" id="Origin" placeholder="Origin" ngModel class="form-control" >
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+       <div class="form-group">
+             <label for="Destination">Destination</label>
+            <input type="text" name="destination" id="Destination" placeholder="Destination" ngModel class="form-control" aria-describedby="basic-addon3">
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+       <div class="form-group">
+              <label for="Departure">Departure</label>
+            <input type="date" name="departure" id="Departure" placeholder="Departure" [(ngModel)]="depDateInput"  class="form-control" aria-describedby="basic-addon3">
+        </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+         <div class="form-group">
+             <label for="Return">Return</label>
+            <input type="date" name="return" id="Return" placeholder="Return" [(ngModel)]="retDateInput" class="form-control" aria-describedby="basic-addon3">
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <label for="Adult">Adult</label>
+            <select name="adult" id="Adult" [(ngModel)]="adult" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <label for="Child">Child</label>
+            <select name="child" id="Child"  [(ngModel)]="child" class="form-control">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <label for="Infant">Infant</label>
+            <select name="infants" id="Infant" [(ngModel)]="infant" class="form-control">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+           <label for="Class">Class</label>
+            <select name="cabinClass" id="Class" [(ngModel)]="cabinClass" class="form-control">
+         <option value="2">Economy</option>
+         <option value="3">Premium Economy</option>
+         <option value="4">Business</option>
+         <option value="5">Premium Business</option>
+         <option value="6">First Class</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+       <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>

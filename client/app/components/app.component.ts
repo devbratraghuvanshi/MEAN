@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./../stylesheets/app.component.css']
 })
 export class AppComponent {
-  title = 'Flight Search page';
+  title = 'Flight Portal';
 }
