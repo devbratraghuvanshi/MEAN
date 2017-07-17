@@ -37,7 +37,7 @@ import { AppComponent } from './components/app.component';
     component: SearchFlightFormComponent
   },
     {
-    path: 'results',
+    path: 'results/:searchString',
     component: SearchResultsComponent
   }
 ])

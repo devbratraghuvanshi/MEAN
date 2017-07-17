@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SearchFlight } from './../models/search-flight';
 import * as Moment from 'moment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class SearchFlightFormComponent {
     infant: Number;
     cabinClass: Number;
 
-    constructor( ) {
+    constructor(private router: Router ) {
         this.tripType = 'OneWay';
         this.adult = 1;
         this.child = 0;
@@ -60,7 +61,10 @@ export class SearchFlightFormComponent {
     }
 
     onSubmit(search) {
-        console.log(search)
+    console.log(search)
+    let serchStr = '1-1-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-';
+    serchStr = serchStr + ',Delhi_DEL_IN_Mumbai_BOM_IN_' + search.departure.replace('-', '');
+    this.router.navigate(['/results/' + serchStr ]);
     }
 
 }
