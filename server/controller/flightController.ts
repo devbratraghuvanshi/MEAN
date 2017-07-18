@@ -30,8 +30,9 @@ public AddAllFlightsToMongoDB(req: Request, res: Response, next: NextFunction) {
    * GET all movies.
    */
   public async getAllFlightsApi(req: Request, res: Response, next: NextFunction) {
+   const search = req.params.searchStr;
     const api = new YtApi();
-    res.send( await api.getResrult());
+    res.send( await api.getResrult(search));
     // FlightSearch.find((error, flights) => {
     //   if (error) {
     //     res.status(500);

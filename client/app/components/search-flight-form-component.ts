@@ -62,8 +62,8 @@ export class SearchFlightFormComponent {
 
     onSubmit(search) {
     console.log(search)
-    let serchStr = '1-1-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-';
-    serchStr = serchStr + ',Delhi_DEL_IN_Mumbai_BOM_IN_' + search.departure.replace('-', '');
+    let serchStr = '1-1-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-,';
+    serchStr = serchStr + 'Delhi_DEL_IN_Mumbai_BOM_IN_' + Moment(new Date(search.departure)).format('MMDDYYYY');
     this.router.navigate(['/results/' + serchStr ]);
     }
 
