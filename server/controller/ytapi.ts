@@ -10,7 +10,7 @@ export class YtApi {
     public async getResrult(search: String) {
       //  this.doSearch(search);
         const baseUrl = 'http://yuvatrip.com/webservices/b2c/flightapi.asmx/Search'
-        const query = 'FlightSearchCriteria=%22' + search + '%22';
+        const query = 'FlightSearchCriteria="' + search + '"';
         const res = await WebRequest.json<any>(baseUrl + '?' + query, { headers: { 'content-type': 'application/json' } });
      // console.log(res);
         return JSON.parse(res.d);

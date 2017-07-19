@@ -23,7 +23,7 @@ export class SearchFlightFormComponent {
     cabinClass: Number;
 
     constructor(private router: Router ) {
-        this.tripType = 'OneWay';
+        this.tripType = '1';
         this.adult = 1;
         this.child = 0;
         this.infant = 0;
@@ -62,7 +62,7 @@ export class SearchFlightFormComponent {
 
     onSubmit(search) {
     console.log(search)
-    let serchStr = '1-1-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-,';
+    let serchStr = '1-' + search.journeyType + '-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-,';
     serchStr = serchStr + 'Delhi_DEL_IN_Mumbai_BOM_IN_' + Moment(new Date(search.departure)).format('MMDDYYYY');
     this.router.navigate(['/results/' + serchStr ]);
     }
