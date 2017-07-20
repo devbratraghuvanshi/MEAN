@@ -1,40 +1,43 @@
-<form class="container"  #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+<form class="container" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
 
-    <div class="col-md-8 col-md-offset-2">  
-    <div class="form-group col-md-6">
-        <label for="OneWay">OneWay</label>
-            <input type="radio" name="journeyType" id="OneWay" value="1"  [(ngModel)]="tripType" >
-    </div>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group col-md-6">
+            <label for="OneWay">OneWay</label>
+            <input type="radio" name="journeyType" id="OneWay" value="1" [(ngModel)]="tripType">
+        </div>
 
-    <div class="form-group col-md-6">
-         <label for="Return">Return</label>
-            <input type="radio" name="journeyType" id="Return" value="2"  [(ngModel)]="tripType" >
-    </div>
+        <div class="form-group col-md-6">
+            <label for="Return">Return</label>
+            <input type="radio" name="journeyType" id="Return" value="2" [(ngModel)]="tripType">
+        </div>
     </div>
 
     <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
             <label for="Origin">Origin</label>
-            <input type="text" name="origin" id="Origin" placeholder="Origin" ngModel class="form-control" >
+            <!-- <input type="text" name="origin" id="Origin" placeholder="Origin" ngModel class="form-control" > -->
+            <input ngui-auto-complete name="origin" class="form-control" [(ngModel)]="selected" [source]="observableSource.bind(this)"
+                list-formatter="label" />
         </div>
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-       <div class="form-group">
-             <label for="Destination">Destination</label>
+        <div class="form-group">
+            <label for="Destination">Destination</label>
             <input type="text" name="destination" id="Destination" placeholder="Destination" ngModel class="form-control" aria-describedby="basic-addon3">
         </div>
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-       <div class="form-group">
-              <label for="Departure">Departure</label>
-            <input type="date" name="departure" id="Departure" placeholder="Departure" [(ngModel)]="depDateInput"  class="form-control" aria-describedby="basic-addon3">
+        <div class="form-group">
+            <label for="Departure">Departure</label>
+            <input type="date" name="departure" id="Departure" placeholder="Departure" [(ngModel)]="depDateInput" class="form-control"
+                aria-describedby="basic-addon3">
         </div>
     </div>
     <div class="col-md-8 col-md-offset-2">
-         <div class="form-group">
-             <label for="Return">Return</label>
+        <div class="form-group">
+            <label for="Return">Return</label>
             <input type="date" name="return" id="Return" placeholder="Return" [(ngModel)]="retDateInput" class="form-control" aria-describedby="basic-addon3">
         </div>
     </div>
@@ -59,7 +62,7 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
             <label for="Child">Child</label>
-            <select name="child" id="Child"  [(ngModel)]="child" class="form-control">
+            <select name="child" id="Child" [(ngModel)]="child" class="form-control">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -82,7 +85,7 @@
 
     <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
-           <label for="Class">Class</label>
+            <label for="Class">Class</label>
             <select name="cabinClass" id="Class" [(ngModel)]="cabinClass" class="form-control">
          <option value="2">Economy</option>
          <option value="3">Premium Economy</option>
@@ -94,7 +97,7 @@
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-       <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </div>
 
 </form>

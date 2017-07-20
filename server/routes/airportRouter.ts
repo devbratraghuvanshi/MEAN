@@ -15,7 +15,7 @@ export class AirportRouter {
   init() {
     this.router.get('/', this.controller.getAirports);
     this.router.get('/addtodb', this.controller.AddAllAirportsToMongoDB);
-    //this.router.get('/:id', this.controller.getAirportById);
+    this.router.get('/:searchStr', this.controller.searchAirport);
   }
 
 }

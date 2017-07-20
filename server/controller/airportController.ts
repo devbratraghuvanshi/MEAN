@@ -26,6 +26,19 @@ public AddAllAirportsToMongoDB(req: Request, res: Response, next: NextFunction) 
     });
   }
 
+    public async searchAirport(req: Request, res: Response, next: NextFunction) {
+        const search = req.params.searchStr;
+    Airport.find({ 'label': new RegExp(search, 'i') }, (error, airportList) => {
+      if (error) {
+        res.status(500);
+        res.send('internal server error');
+      } else {
+        res.status(200);
+        res.send(airportList);
+      }
+    });
+  }
+
 }
 
 export default AirportController;

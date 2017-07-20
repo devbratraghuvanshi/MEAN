@@ -1,7 +1,15 @@
+
+
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Http, Response, Headers, RequestOptions  } from '@angular/http';
+
 import { SearchFlight } from './../models/search-flight';
 import * as Moment from 'moment';
 import { Router } from '@angular/router';
+
+
+
 
 
 @Component({
@@ -22,7 +30,7 @@ export class SearchFlightFormComponent {
     infant: Number;
     cabinClass: Number;
 
-    constructor(private router: Router ) {
+    constructor(private router: Router, public http: Http ) {
         this.tripType = '1';
         this.adult = 1;
         this.child = 0;
@@ -32,6 +40,17 @@ export class SearchFlightFormComponent {
         this.rDate = new Date(); // Moment(new Date()).format('DD/MM/YYYY');
 
     }
+
+   observableSource = (keyword: any): Observable<any[]> => {
+    if (keyword) {
+      return this.http.get('http://localhost:3000/api/v1/airports/' + keyword)
+        .map(res => {
+          return res.json();
+        })
+    } else {
+      return Observable.of([]);
+    }
+  }
 
     set depDateInput(e) {
         if (e !== '') {
@@ -62,8 +81,10 @@ export class SearchFlightFormComponent {
 
     onSubmit(search) {
     console.log(search)
-    let serchStr = '1-' + search.journeyType + '-' + search.adult + '-' + search.child + '-' + search.infants + '-' + search.cabinClass + '-,';
-    serchStr = serchStr + 'Delhi_DEL_IN_Mumbai_BOM_IN_' + Moment(new Date(search.departure)).format('MMDDYYYY');
+    let serchStr = '1-' + search.journeyType;
+        serchStr = serchStr + '-' + search.adult + '-' + search.child + '-' + search.infants ;
+        serchStr = serchStr  + '-' + search.cabinClass + '-,';
+        serchStr = serchStr + 'Delhi_DEL_IN_Mumbai_BOM_IN_' + Moment(new Date(search.departure)).format('MMDDYYYY');
     this.router.navigate(['/results/' + serchStr ]);
     }
 

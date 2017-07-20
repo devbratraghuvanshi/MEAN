@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { NguiAutoCompleteModule } from '@ngui/auto-complete';
+
 import { SearchResultsComponent } from './components/search-results-component';
 import { FlightDetailComponent } from './components/flight-detail.component';
 import { SearchFlightFormComponent } from './components/search-flight-form-component';
@@ -20,12 +22,13 @@ import { AppComponent } from './components/app.component';
     AppComponent,
     FlightDetailComponent,
     SearchResultsComponent,
-    SearchFlightFormComponent
+    SearchFlightFormComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    NguiAutoCompleteModule,
     RouterModule.forRoot([
       {
         path: '',
