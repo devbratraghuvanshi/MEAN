@@ -9,7 +9,7 @@ import { FlightSearch } from './../models/flight-search-model';
 @Injectable()
 export class FlightService {
 
-    private baseUrl = 'http://localhost:3000/api/v1/flight/search/api';
+    private baseUrl = 'http://localhost:3000/api/v1/flight/search';
 
     constructor(private http: Http) { }
 

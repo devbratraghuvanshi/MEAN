@@ -1,18 +1,18 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { FlightSearch } from '../Repository/flight-search-repository';
+import { FlightSearch, Airport } from '../Repository/flight-search-repository';
 import { YtApi } from './ytapi';
 
 
 export class FlightController {
 
-  // use this only one time to add all movies to MongoDb from MoviesData folder
+  // use this only one time to add all flights to MongoDb from Data folder
 public AddAllFlightsToMongoDB(req: Request, res: Response, next: NextFunction) {
    // drop old collection from Mongo db
     FlightSearch.collection.drop();
-    // read data from MoviesData folder and add to collection in mongo db
+    // read data from Data folder and add to collection in mongo db
     const flights = require('./../dataFile/search-ressult-data.json');
     FlightSearch.collection.insert(flights);
-    res.send('data added');
+    res.send('flights data added');
   }
 
     public async getAllFlightsDB(req: Request, res: Response, next: NextFunction) {

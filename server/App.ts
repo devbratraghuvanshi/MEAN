@@ -24,6 +24,7 @@ class App {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.express.use(express.static(path.join(__dirname, '../dist')));
+   // this.express.use((req, res) => { res.redirect('/'); }) // redirect all the un match request to index url
   }
 
   // Configure API endpoints.

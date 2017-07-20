@@ -1,6 +1,7 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import IndexController from './../controller/IndexController'
 import flightRouter from './flightRouter';
+import airportRouter from './airportRouter';
 
 export class IndexRouter {
   router: Router
@@ -18,8 +19,10 @@ export class IndexRouter {
    * endpoints.
    */
   init() {
-    this.router.get('/', IndexController.get);
-    this.router.use('/api/v1/flight/search', flightRouter);
+    this.router.get('', IndexController.get); // it will get hit only if ng App is not working and Api is working
+    this.router.use('/api/v1/flight', flightRouter);
+    this.router.use('/api/v1/airports', airportRouter);
+    this.router.get('/*', IndexController.redirectToIndex);
   }
 
 }
