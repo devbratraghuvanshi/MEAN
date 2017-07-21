@@ -1,4 +1,4 @@
-<form class="container" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+<form class="container" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)" autocomplete="off">
 
     <div class="col-md-8 col-md-offset-2">
         <div class="form-group col-md-6">
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="Origin">Origin</label>
             <!-- <input type="text" name="origin" id="Origin" placeholder="Origin" ngModel class="form-control" > -->
-            <input ngui-auto-complete name="origin" class="form-control" [(ngModel)]="selected" [source]="observableSource.bind(this)"
+            <input ngui-auto-complete name="origin" class="form-control" [(ngModel)]="origin" [source]="observableSource.bind(this)"
                 list-formatter="label" />
         </div>
     </div>
@@ -24,7 +24,9 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
             <label for="Destination">Destination</label>
-            <input type="text" name="destination" id="Destination" placeholder="Destination" ngModel class="form-control" aria-describedby="basic-addon3">
+            <!-- <input type="text" name="destination" id="Destination" placeholder="Destination" ngModel class="form-control" aria-describedby="basic-addon3"> -->
+                   <input ngui-auto-complete name="destination" class="form-control" [(ngModel)]="destiantion" [source]="observableSource.bind(this)"
+                list-formatter="label" />
         </div>
     </div>
 

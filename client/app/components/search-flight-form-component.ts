@@ -1,7 +1,7 @@
 
 
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { Http, Response, Headers, RequestOptions  } from '@angular/http';
 
 import { SearchFlight } from './../models/search-flight';
@@ -21,8 +21,8 @@ export class SearchFlightFormComponent {
 
     isDomestic: boolean;
     tripType;
-    origin: String;
-    destiantion: String;
+    origin: any;
+    destiantion: any;
     dDate: any;
     rDate: any;
     adult: Number;
@@ -81,10 +81,17 @@ export class SearchFlightFormComponent {
 
     onSubmit(search) {
     console.log(search)
+
+     let originCode =   search.origin.label + search.origin.Country + '';
+        originCode =  originCode.replace(' [ ', '_').replace(' ]', '_') ;
+
+    let destCode =   search.destination.label + search.destination.Country + '';
+        destCode =  destCode.replace(' [ ', '_').replace(' ]', '_') ;
+
     let serchStr = '1-' + search.journeyType;
         serchStr = serchStr + '-' + search.adult + '-' + search.child + '-' + search.infants ;
         serchStr = serchStr  + '-' + search.cabinClass + '-,';
-        serchStr = serchStr + 'Delhi_DEL_IN_Mumbai_BOM_IN_' + Moment(new Date(search.departure)).format('MMDDYYYY');
+        serchStr = serchStr + originCode + '_' + destCode + '_' + Moment(new Date(search.departure)).format('MMDDYYYY');
     this.router.navigate(['/results/' + serchStr ]);
     }
 

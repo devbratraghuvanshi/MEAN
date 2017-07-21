@@ -36,7 +36,7 @@ public AddAllAirportsToMongoDB(req: Request, res: Response, next: NextFunction) 
         res.status(200);
         res.send(airportList);
       }
-    });
+    }).limit(5);
   }
 
 }
